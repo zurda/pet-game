@@ -57,7 +57,7 @@ const gameState = {
     this.sleepTime = this.clock + DAY_LENGTH;
     this.hungryTime = getNextHungerTime(this.clock);
   },
-  handleUserAction(icon) {
+  handleUserAction(icon: string): undefined {
     if (
       ["SLEEP", "FEEDING", "CELEBRATING", "HATCHING"].includes(this.current)
     ) {
@@ -80,6 +80,7 @@ const gameState = {
         this.feed();
         break;
     }
+    return;
   },
   changeWeather() {
     this.scene = (1 + this.scene) % SCENES.length;

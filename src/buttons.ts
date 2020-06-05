@@ -1,13 +1,17 @@
 import { ICONS } from "./constants";
 
-const toggleHighlighted = (icon, show) =>
-  document
-    .querySelector(`.${ICONS[icon]}-icon`)
-    .classList.toggle("highlighted", show);
+const toggleHighlighted = (icon: number, show: boolean) => {
+  const highlighted = document.querySelector(
+    `.${ICONS[icon]}-icon`
+  ) as HTMLElement;
+  highlighted.classList.toggle("highlighted", show);
+};
 
-export default function initButtons(handleUserAction) {
+export default function initButtons(
+  handleUserAction: (_: string) => undefined
+) {
   let selectedIcon = 0;
-  function buttonClick({ target }) {
+  function buttonClick({ target }: any) {
     if (target.classList.contains("left-btn")) {
       toggleHighlighted(selectedIcon, false);
       selectedIcon = (2 + selectedIcon) % ICONS.length;
@@ -21,5 +25,6 @@ export default function initButtons(handleUserAction) {
     }
   }
 
-  document.querySelector(".buttons").addEventListener("click", buttonClick);
+  const buttons = document.querySelector(".buttons") as HTMLElement;
+  buttons.addEventListener("click", buttonClick);
 }
