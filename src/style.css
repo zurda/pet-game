@@ -92,10 +92,13 @@ body {
   right: 0;
   background-color: blueviolet;
   color: white;
+  border-radius: 8px;
+}
+
+.modal-inner {
   padding: 25px;
   font-size: 20px;
   font-weight: bold;
-  border-radius: 8px;
 }
 
 .modal:empty {
